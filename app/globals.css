@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-hero-radial font-body text-ink antialiased;
+  min-height: 100vh;
+}
+
+body::before {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.48), transparent 22%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -2;
+}
+
+body::after {
+  background-image:
+    linear-gradient(rgba(22, 19, 17, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 19, 17, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  content: "";
+  inset: 0;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 92%);
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
+section {
+  scroll-margin-top: 120px;
+}
+
+.container-shell {
+  @apply mx-auto w-full max-w-[1240px] px-5 sm:px-6 lg:px-8;
+}
+
+.glass-panel {
+  @apply rounded-[32px] border border-line bg-panel shadow-card backdrop-blur-2xl;
+}
+
+.gradient-border {
+  background:
+    linear-gradient(#fffaf4, #fffaf4) padding-box,
+    linear-gradient(135deg, rgba(47, 106, 224, 0.22), rgba(255, 255, 255, 0.95), rgba(138, 109, 59, 0.22)) border-box;
+  border: 1px solid transparent;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #1b1b1b 0%, #2f6ae0 52%, #8a6d3b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+  @apply max-w-4xl font-display text-4xl font-medium tracking-[-0.04em] text-ink sm:text-5xl lg:text-6xl;
+}
+
+.section-copy {
+  @apply max-w-2xl text-base leading-8 text-mist;
+}
+
+.pill {
+  @apply inline-flex items-center rounded-full border border-black/10 bg-white/70 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.24em] text-mist;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 200ms ease;
+}
+
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+.section-band {
+  @apply border-y border-black/5 bg-white/35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
